@@ -1,99 +1,151 @@
 :root{
     --background: #343546;
 }
+
+html{
+    font-size: 62.5%;
+}
+
 body{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 1.75rem;
+    line-height: 1.5;
     background-color: #343546;
     color: white;
 }
 
-h1{
-    text-align: center;
-    font-size: 40px;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+h1, h2 {
+    margin-bottom: 0.625rem;
     color: mediumorchid;
-    padding: 10px;
+    font-weight: 700;
+    line-height: 1.1;
+}
+
+h1{
+    font-size: 4rem;
+}
+
+h2{
+    font-size: 3.5rem;
 }
 
 p{
-    margin: 20px;
+    margin-bottom: 1rem;
+}
+
+header{
+    width: 96%;
+    margin: 0 auto;
+    padding: 2.5rem;
     text-align: center;
+}
+
+main{
+    width: 96%;
+    margin: 2rem auto;
 }
 
 .row{
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
-    margin: 32px 32px;
-    justify-content: center;
+    margin-left: -1.5rem;
+    margin-right: -1.5rem;
+}
+
+.column{
+    flex: 1 0 100%;
+    padding: 1.5rem;
+
+    transition: flex-basis 500ms linear;
+    margin-bottom: 1.5rem;
 }
 
 .card{
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    min-width: 400px;
-    text-align: center;
+    min-height: 100%;
+    padding: 2rem;
 
-    flex: 1 0 200px;
-    padding: 10px;
-    
     border-style: dashed;
     border-width: 2px;
-    margin: 30px;
-
     outline-offset: -2px;
     transition: all 0.5s ease-in-out;
 }
 
-.card h2{
-    padding: 10px;
+.card .card-header{
+    position:relative;
+    margin: -4rem 0 1.5rem 0;
+    padding: 0.5rem 1rem;
+
+    background-color: #343546;
+
+    color: mediumorchid;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+
     border-color: white;
     border-style: solid;
     border-width: 2px;
     border-radius: 5px;
 
-    position:relative;
-    bottom: 35px;
+    transition: all 0.5s ease-in-out;
 
-    text-align: left;
-    font-weight: bold;
-    color: mediumorchid;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    font-size: 30px;
-
-    background-color: #343546;
 }
 
-.card h2:hover{
+.card-header:hover{
     box-shadow: inset 0px 0px 8px white;
 }
 
-
-.card p{
-    position: relative;
-    bottom: 30px;
-    color: mediumorchid;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    text-align: left;
-    margin: 10px;
+.card .code-block{
+    flex-grow: 1;
 }
 
-pre{
-    background-color: mediumorchid;
-    background-image: linear-gradient(rgb(80, 47, 88), mediumorchid);
-    color: white;
-    
-    justify-content: left;
-    
-    text-align: left;
-    position: relative;
-    
-    /*bottom: 10px;*/
+.card pre{
 
-    border-radius: 5px;
-    font-family: 'Courier New', Courier, monospace;
-    /* line-height: 1.5; */
-    padding: 10px;
     white-space: pre-wrap;
     overflow: auto;
+    tab-size: 4;
+    padding: 1.2rem 1rem;
+
+    color: white;
+    border-radius: 5px;
+    background-image: linear-gradient(rgb(80, 47, 88), mediumorchid);
+
+    display: flex;
+    align-items: center;
+
+    font-family: 'Courier New', Courier, monospace;
+
 }
+
+.card pre:active{
+    user-select: all;
+}
+
+/* using a mobile-first approach, use `min-width` values going from narrow -> wide for a responsive design */
+@media screen and (min-width: 768px) {
+    /* on tablets, set columns to only be 50% of the width and not grow */
+    .column {
+      flex: 0 0 50%;
+      max-width: 50%;
+    }
+  
+    /* select the last child to grow to full width if it has space to grow */
+    .column:last-child {
+      flex-grow: 1;
+    }
+  }
+  
+  /* media query for larger screens */
+  @media screen and (min-width: 992px) {
+    header {
+      width: 75%;
+    }
+  
+    .column {
+      flex: 0 0 33.333%;
+      max-width: 33.333%;
+    }
+  }
+  
